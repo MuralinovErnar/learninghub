@@ -1,0 +1,20 @@
+
+
+{% block content %}
+<h1>Курсы</h1>
+
+{% if user.is_authenticated and user.role == 'teacher' %}
+  <a href="{% url 'courses:course_create' %}" class="btn btn-primary">Добавить курс</a>
+{% endif %}
+
+<ul>
+  {% for course in courses %}
+    <li>
+      <a href="{% url 'courses:course_detail' course.id %}">{{ course.title }}</a>
+      — {{ course.teacher.username }}
+    </li>
+  {% empty %}
+    <li>Курсы пока не добавлены.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
