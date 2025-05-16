@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учебник по математике</title>
+    <!-- Подключаем Bootstrap 4.5.2 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .section {
+            padding: 30px 0;
+            border-bottom: 2px solid #e2e2e2;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .example {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .example code {
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+        .nav-link {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            color: #0056b3;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-sm mb-4">
+        <nav class="container py-3 d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">LearningHub</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="container">
+    <div class="row">
+        <!-- Содержание с боковой навигацией -->
+        <div class="col-md-3">
+            <div class="sticky-top">
+                <div class="list-group">
+                    <h5 class="text-center mb-4">Содержание</h5>
+                    <a href="#section1" class="list-group-item list-group-item-action">Введение в математику</a>
+                    <a href="#section2" class="list-group-item list-group-item-action">Основные операции</a>
+                    <a href="#section3" class="list-group-item list-group-item-action">Решение уравнений</a>
+                    <a href="#section4" class="list-group-item list-group-item-action">Геометрия</a>
+                    <a href="#section5" class="list-group-item list-group-item-action">Тригонометрия</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="col-md-9">
+            <div id="section1" class="section">
+                <h2>Введение в математику</h2>
+                <p>Математика — это наука, изучающая числа, формы и различные величины. Она охватывает широкий спектр тем, таких как арифметика, алгебра, геометрия, статистика и многие другие области. Важно понять основы, так как они служат фундаментом для дальнейшего изучения.</p>
+                <p>Задачи, решаемые в математике, могут быть простыми, такими как сложение и вычитание, или сложными, как решение систем уравнений или нахождение корней многочленов.</p>
+            </div>
+
+            <div id="section2" class="section">
+                <h2>Основные операции</h2>
+                <h3>Сложение</h3>
+                <p>Сложение — это операция, при которой два числа (слагаемых) объединяются в одно, называемое суммой. Например:</p>
+                <div class="example">
+                    <p>Пример: 5 + 3 = 8</p>
+                </div>
+
+                <h3>Вычитание</h3>
+                <p>Вычитание — это операция, при которой одно число (вычитаемое) из другого (уменьшаемого). Результат называется разностью. Например:</p>
+                <div class="example">
+                    <p>Пример: 8 - 3 = 5</p>
+                </div>
+
+                <h3>Умножение</h3>
+                <p>Умножение — это операция, при которой одно число (множитель) повторяется несколько раз. Результат называется произведением. Например:</p>
+                <div class="example">
+                    <p>Пример: 4 × 6 = 24</p>
+                </div>
+
+                <h3>Деление</h3>
+                <p>Деление — это операция, при которой одно число (делимое) делится на другое (делитель). Результат называется частным. Например:</p>
+                <div class="example">
+                    <p>Пример: 12 ÷ 4 = 3</p>
+                </div>
+            </div>
+
+            <div id="section3" class="section">
+                <h2>Решение уравнений</h2>
+                <p>Уравнение — это математическое выражение, состоящее из чисел, букв и знаков, которое указывает на равенство двух выражений. Решение уравнения заключается в нахождении значения переменной, при котором уравнение верно.</p>
+                <h3>Пример уравнения:</h3>
+                <div class="example">
+                    <p>2x + 5 = 15</p>
+                    <p>Решение: 2x = 10 → x = 5</p>
+                </div>
+            </div>
+
+            <div id="section4" class="section">
+                <h2>Геометрия</h2>
+                <p>Геометрия изучает формы, размеры и положения объектов в пространстве. В геометрии важными элементами являются точки, линии, углы и фигуры.</p>
+                <h3>Пример:</h3>
+                <div class="example">
+                    <p>Площадь круга с радиусом r: A = πr²</p>
+                    <p>Для круга с радиусом 3 см, площадь будет: A = 3.14 × 3² = 28.26 см²</p>
+                </div>
+            </div>
+
+            <div id="section5" class="section">
+                <h2>Тригонометрия</h2>
+                <p>Тригонометрия изучает соотношения сторон и углов в треугольниках, а также функции, такие как синус, косинус и тангенс.</p>
+                <h3>Пример:</h3>
+                <div class="example">
+                    <p>sin(30°) = 0.5</p>
+                    <p>cos(60°) = 0.5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Учебник по математике. Все права защищены.</p>
+</footer>
+
+<!-- Подключаем Bootstrap JS и jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

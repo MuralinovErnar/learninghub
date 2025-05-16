@@ -51,3 +51,5 @@ def course_create_view(request):
         form = CourseForm()
 
     return render(request, 'courses/course_create.html', {'form': form})
+def test_view(request):
+    return render(request,'courses/test.html')

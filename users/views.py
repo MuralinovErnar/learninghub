@@ -57,3 +57,7 @@ def redirect_by_role(user):
     elif user.role == 'student':
         return redirect('student_dashboard')
     return redirect('home')
+def test_view(request):
+    return render(request,'courses/test.html')
+def doc_view(request):
+    return render(request,'courses/doc.html')

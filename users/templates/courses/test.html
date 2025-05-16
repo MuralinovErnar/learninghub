@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по математике</title>
+    <!-- Подключаем Bootstrap 4.5.2 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .btn {
+            width: 100%;
+            font-size: 1.2em;
+        }
+        .result {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .correct {
+            background-color: #28a745;
+            color: white;
+        }
+        .incorrect {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-sm mb-4">
+        <nav class="container py-3 d-flex justify-content-between align-items-center">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">LearningHub</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-primary text-white">
+                    <h2>Тест по математике</h2>
+                </div>
+                <div class="card-body">
+                    <form id="quizForm">
+                        <!-- Вопрос 1 -->
+                        <div class="question">
+                            <h4>1. Сколько будет 5 + 3?</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="8" id="q1a1">
+                                <label class="form-check-label" for="q1a1">
+                                    8
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="7" id="q1a2">
+                                <label class="form-check-label" for="q1a2">
+                                    7
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question1" value="9" id="q1a3">
+                                <label class="form-check-label" for="q1a3">
+                                    9
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Вопрос 2 -->
+                        <div class="question">
+                            <h4>2. Сколько будет 12 * 4?</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" value="48" id="q2a1">
+                                <label class="form-check-label" for="q2a1">
+                                    48
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" value="52" id="q2a2">
+                                <label class="form-check-label" for="q2a2">
+                                    52
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question2" value="50" id="q2a3">
+                                <label class="form-check-label" for="q2a3">
+                                    50
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Вопрос 3 -->
+                        <div class="question">
+                            <h4>3. Какой квадрат числа 7?</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" value="49" id="q3a1">
+                                <label class="form-check-label" for="q3a1">
+                                    49
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" value="56" id="q3a2">
+                                <label class="form-check-label" for="q3a2">
+                                    56
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question3" value="64" id="q3a3">
+                                <label class="form-check-label" for="q3a3">
+                                    64
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Вопрос 4 -->
+                        <div class="question">
+                            <h4>4. Сколько будет 25 / 5?</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" value="5" id="q4a1">
+                                <label class="form-check-label" for="q4a1">
+                                    5
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" value="6" id="q4a2">
+                                <label class="form-check-label" for="q4a2">
+                                    6
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question4" value="4" id="q4a3">
+                                <label class="form-check-label" for="q4a3">
+                                    4
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Вопрос 5 -->
+                        <div class="question">
+                            <h4>5. Какое число следующее после 10?</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" value="11" id="q5a1">
+                                <label class="form-check-label" for="q5a1">
+                                    11
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" value="12" id="q5a2">
+                                <label class="form-check-label" for="q5a2">
+                                    12
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="question5" value="9" id="q5a3">
+                                <label class="form-check-label" for="q5a3">
+                                    9
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">Проверить ответы</button>
+                    </form>
+
+                    <div id="result" class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключаем Bootstrap JS и jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Функция для обработки теста
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const answers = {
+            question1: '8',
+            question2: '48',
+            question3: '49',
+            question4: '5',
+            question5: '11'
+        };
+
+        let score = 0;
+
+        // Проверка каждого вопроса
+        for (let i = 1; i <= 5; i++) {
+            let selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+            if (selectedOption && selectedOption.value === answers[`question${i}`]) {
+                score++;
+            }
+        }
+
+        // Отображение результатов
+        const result = document.getElementById('result');
+        result.classList.remove('correct', 'incorrect');
+        if (score === 5) {
+            result.textContent = 'Вы правильно ответили на все вопросы! Отличный результат!';
+            result.classList.add('correct');
+        } else {
+            result.textContent = `Вы ответили правильно на ${score} из 5 вопросов. Попробуйте еще раз!`;
+            result.classList.add('incorrect');
+        }
+    });
+</script>
+</body>
+</html>

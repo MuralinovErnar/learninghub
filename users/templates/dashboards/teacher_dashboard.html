@@ -1,4 +1,4 @@
-
+{% extends 'registration\base.html' %}
 
 {% block title %}Панель преподавателя — LearningHub{% endblock %}
 
@@ -14,8 +14,10 @@
             <div class="card-body text-center">
                 <h5 class="card-title">Добро пожаловать, {{ user.username }}!</h5>
                 <div class="d-grid gap-2 col-6 mx-auto mt-4">
-                    <a href="{% url 'courses:create_course' %}" class="btn btn-outline-primary">➕ Создать курс</a>
-                    <a href="{% url 'courses:teacher_courses' %}" class="btn btn-outline-secondary">📚 Мои курсы</a>
+                    <a href="{% url 'courses:course_create' %}" class="btn btn-primary">
+                        ➕ Добавить курс
+                      </a>
+                        <a href="{% url 'courses:course_list' %}" class="btn btn-outline-primary">📚 общие курсы</a>
                     <a href="#" class="btn btn-outline-info disabled">👥 Студенты (в разработке)</a>
                     <a href="{% url 'home' %}" class="btn btn-outline-dark">🏠 На главную</a>
                     <a href="{% url 'logout' %}" class="btn btn-outline-danger">🚪 Выйти</a>

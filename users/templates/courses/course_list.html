@@ -1,20 +1,42 @@
-
-
+{% extends 'registration\base.html' %}
 {% block content %}
-<h1>Курсы</h1>
+<div class="container mt-4">
 
-{% if user.is_authenticated and user.role == 'teacher' %}
-  <a href="{% url 'courses:course_create' %}" class="btn btn-primary">Добавить курс</a>
-{% endif %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3">📚 Курсы</h1>
+    {% if user.is_authenticated and user.role == 'teacher' %}
+      <a href="{% url 'courses:course_create' %}" class="btn btn-primary">
+        ➕ Добавить курс
+      </a>
+    {% endif %}
+  </div>
 
-<ul>
-  {% for course in courses %}
-    <li>
-      <a href="{% url 'courses:course_detail' course.id %}">{{ course.title }}</a>
-      — {{ course.teacher.username }}
-    </li>
-  {% empty %}
-    <li>Курсы пока не добавлены.</li>
-  {% endfor %}
-</ul>
+  {% if courses %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for course in courses %}
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            {% if course.image %}
+              <img src="{{ course.image.url }}" class="card-img-top" alt="Обложка курса">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+            </div>
+            <div class="card-footer text-muted small">
+              Преподаватель: {{ course.teacher.username }}
+              <br>
+              <a href="{% url 'courses:course_detail' course.id %}" class="btn btn-sm btn-outline-primary mt-2">Подробнее →</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info mt-3">
+      Курсы пока не добавлены.
+    </div>
+  {% endif %}
+
+</div>
 {% endblock %}

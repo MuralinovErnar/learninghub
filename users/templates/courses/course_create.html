@@ -1,14 +1,26 @@
-
+{% extends 'registration\base.html' %}
 
 {% block content %}
 <h1>Добавить новый курс</h1>
 
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
+  
+  <!-- Название курса -->
+  <div class="form-group mb-3">
+    <label for="{{ form.title.id_for_label }}">Название курса</label>
+    {{ form.title|default_if_none:"" }} <!-- Простой вывод поля формы -->
+  </div>
+
+  <!-- Описание курса -->
+  <div class="form-group mb-3">
+    <label for="{{ form.description.id_for_label }}">Описание курса</label>
+    {{ form.description|default_if_none:"" }} <!-- Простой вывод поля формы -->
+  </div>
 
   <button type="submit" class="btn btn-success">Создать курс</button>
 </form>
 
-<a href="{% url 'courses:course_list' %}">← Назад к курсам</a>
+<a href="{% url 'courses:course_list' %}" class="btn btn-outline-secondary mt-3">← Назад к курсам</a>
 {% endblock %}
+

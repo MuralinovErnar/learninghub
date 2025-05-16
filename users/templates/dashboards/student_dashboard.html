@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8" />
-    <title>Дашборд студента</title>
-</head>
-<body>
-    <h1>Привет, студент {{ user.username }}!</h1>
-    <p>Это твоя панель управления.</p>
-</body>
-</html>
+{% extends 'registration\base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-3">🎓 Привет, {{ user.username }}!</h2>
+            <p class="card-text">Добро пожаловать в панель студента. Здесь вы можете:</p>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">📘 Просматривать доступные курсы</li>
+                <li class="list-group-item">📝 Оставлять комментарии и участвовать в обсуждениях</li>
+                <li class="list-group-item">👤 Управлять своим профилем</li>
+            </ul>
+            <a href="{% url 'courses:course_list' %}" class="btn btn-primary">Перейти к курсам</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

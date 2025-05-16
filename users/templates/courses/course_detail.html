@@ -1,64 +1,72 @@
+{% extends 'registration\base.html' %}
 
 {% block content %}
 
-<!-- Карточка курса -->
-<div class="card mb-4 shadow-sm">
-    <div class="card-body">
-        <h2 class="card-title">{{ course.title }}</h2>
-        <p class="card-text">{{ course.description }}</p>
-        <p class="text-muted">
-            <strong>Преподаватель:</strong> {{ course.teacher.username }}
-        </p>
-        <a href="{% url 'courses:course_list' %}" class="btn btn-outline-secondary btn-sm mt-2">
-            ← Назад к курсам
-        </a>
-    </div>
-</div>
+<div class="container mt-4">
 
-<!-- Блок комментариев -->
-<div class="card mb-4">
-    <div class="card-header bg-primary text-white">
-        Комментарии
-    </div>
-    <div class="card-body">
-        {% if comments %}
-            {% for comment in comments %}
-                <div class="mb-3 border-bottom pb-2">
-                    <p class="mb-1">
-                        <strong>{{ comment.author.username }}</strong>
-                        <small class="text-muted">{{ comment.created_at|date:"d.m.Y H:i" }}</small>
-                    </p>
-                    <p class="mb-0">{{ comment.text }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p class="text-muted">Комментариев пока нет.</p>
+    <!-- Карточка курса -->
+    <div class="card mb-4 shadow-sm">
+        {% if course.image %}
+            <img src="{{ course.image.url }}" class="card-img-top img-fluid" alt="Обложка курса">
         {% endif %}
+        <div class="card-body">
+            <h2 class="card-title">{{ course.title }}</h2>
+            <p class="card-text">{{ course.description }}</p>
+            <p class="text-muted">
+                <strong>Преподаватель:</strong> {{ course.teacher.username }}
+            </p>
+            <a href="{% url 'courses:course_list' %}" class="btn btn-outline-secondary btn-sm mt-2">
+                ← Назад к курсам
+            </a>
+        </div>
     </div>
-</div>
 
-<!-- Форма комментария -->
-{% if user.is_authenticated %}
-    <div class="card">
-        <div class="card-header">
-            Добавить комментарий
+    <!-- Блок комментариев -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            💬 Комментарии
         </div>
         <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-group mb-3">
-                    {{ comment_form.text.label_tag }}
-                    {{ comment_form.text }}
-                    {% if comment_form.text.errors %}
-                        <div class="text-danger">{{ comment_form.text.errors }}</div>
-                    {% endif %}
-                </div>
-                <button type="submit" class="btn btn-primary">Отправить</button>
-            </form>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="mb-3 border-bottom pb-2">
+                        <p class="mb-1">
+                            <strong>{{ comment.author.username }}</strong>
+                            <small class="text-muted">{{ comment.created_at|date:"d.m.Y H:i" }}</small>
+                        </p>
+                        <p class="mb-0">{{ comment.text }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">Комментариев пока нет.</p>
+            {% endif %}
         </div>
     </div>
-{% else %}
-    <p>Пожалуйста, <a href="{% url 'users:login' %}">войдите</a>, чтобы оставить комментарий.</p>
-{% endif %}
+
+    <!-- Форма комментария -->
+    {% if user.is_authenticated %}
+        <div class="card mb-5">
+            <div class="card-header">
+                ✍️ Добавить комментарий
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        {{ comment_form.text.label_tag }}
+                        {{ comment_form.text }}
+                        {% if comment_form.text.errors %}
+                            <div class="text-danger mt-1">{{ comment_form.text.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>Пожалуйста, <a href="{% url 'users:login' %}">войдите</a>, чтобы оставить комментарий.</p>
+    {% endif %}
+
+</div>
 
 {% endblock %}
